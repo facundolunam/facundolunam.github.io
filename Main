@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facu | PhD Candidate in Economics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --accent: #c4a35a;
+            --text: #2d2d2d;
+            --text-light: #5a5a5a;
+            --bg: #faf9f7;
+            --bg-alt: #f0eeea;
+            --border: #e0ddd6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 249, 247, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav ul {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 4rem;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .photo-container {
+            position: relative;
+        }
+
+        .photo {
+            width: 200px;
+            height: 250px;
+            object-fit: cover;
+            filter: grayscale(20%);
+            border: 1px solid var(--border);
+        }
+
+        .photo-placeholder {
+            width: 200px;
+            height: 250px;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+
+        .hero-text h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .hero-text .fields {
+            font-size: 0.95rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-text p {
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .contact-info a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent);
+        }
+
+        /* Section Headers */
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+
+        /* Job Market Paper */
+        .jmp {
+            background: var(--bg-alt);
+            border-left: 4px solid var(--accent);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .jmp-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .paper-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .paper-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+
+        .abstract {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .abstract-toggle {
+            background: none;
+            border: none;
+            color: var(--accent);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 1rem;
+            padding: 0;
+        }
+
+        .abstract-toggle:hover {
+            text-decoration: underline;
+        }
+
+        .abstract-content {
+            display: none;
+            margin-top: 1rem;
+        }
+
+        .abstract-content.show {
+            display: block;
+        }
+
+        /* Working Papers */
+        .paper {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .paper:last-child {
+            border-bottom: none;
+        }
+
+        .paper .paper-title {
+            font-size: 1.2rem;
+        }
+
+        .coauthors {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .paper-status {
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .paper-links {
+            margin-top: 1rem;
+        }
+
+        .paper-links a {
+            display: inline-block;
+            font-size: 0.85rem;
+            color: var(--text);
+            text-decoration: none;
+            margin-right: 1.5rem;
+            padding: 0.3rem 0;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .paper-links a:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* CV Section */
+        .cv-section {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .cv-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .cv-button:hover {
+            background: var(--accent);
+        }
+
+        /* Teaching */
+        .teaching-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .teaching-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .teaching-item p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .photo-container {
+                margin: 0 auto;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#cv">CV</a></li>
+            <li><a href="#teaching">Teaching</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Hero / About Section -->
+        <section id="about" class="hero">
+            <div class="hero-content">
+                <div class="photo-container">
+                    <!-- Replace with your photo: <img src="photo.jpg" alt="Your Name" class="photo"> -->
+                    <div class="photo-placeholder">Your Photo</div>
+                </div>
+                <div class="hero-text">
+                    <h1>Your Name</h1>
+                    <p class="subtitle">PhD Candidate in Economics, Rutgers University</p>
+                    <p class="fields">Macroeconomics · Climate Economics · Monetary Policy</p>
+                    <p>
+                        I am a PhD candidate in Economics at Rutgers University, expecting to graduate in May 2026. 
+                        My research focuses on the intersection of monetary policy and climate economics, with particular 
+                        emphasis on understanding how environmental policies affect macroeconomic dynamics and optimal 
+                        policy design.
+                    </p>
+                    <p>
+                        I will be available for interviews at the 2025 ASSA Annual Meeting in San Francisco.
+                    </p>
+                    <div class="contact-info">
+                        <p>
+                            <strong>Email:</strong> <a href="mailto:your.email@rutgers.edu">your.email@rutgers.edu</a><br>
+                            <strong>Office:</strong> New Jersey Hall, Room XXX
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section id="research">
+            <h2>Research</h2>
+
+            <!-- Job Market Paper -->
+            <div class="jmp">
+                <p class="jmp-label">Job Market Paper</p>
+                <h3 class="paper-title">
+                    <a href="#">Optimal Monetary Policy During Carbon Tax Transitions: A Two-Sector Environmental DSGE Analysis</a>
+                </h3>
+                <button class="abstract-toggle" onclick="toggleAbstract(this)">+ Abstract</button>
+                <div class="abstract-content">
+                    <p class="abstract">
+                        This paper develops a two-sector environmental DSGE model to analyze optimal monetary policy 
+                        during carbon tax transitions. I examine how central banks should respond when governments 
+                        implement carbon pricing policies that generate both supply-side cost pressures and demand-side 
+                        shifts. The model features a "dirty" sector with carbon-intensive production and a "clean" 
+                        sector, allowing me to study sectoral reallocation dynamics. I find that [your key findings here]. 
+                        The results have important implications for central bank communication and policy coordination 
+                        during the green transition.
+                    </p>
+                </div>
+                <div class="paper-links">
+                    <a href="#">PDF</a>
+                    <a href="#">Slides</a>
+                </div>
+            </div>
+
+            <!-- Working Papers -->
+            <div class="paper">
+                <h3 class="paper-title">
+                    <a href="#">Climate Shocks, Trade Credit, and Firm Resilience: Evidence from Chilean Wildfires</a>
+                </h3>
+                <p class="paper-status">Working Paper</p>
+                <button class="abstract-toggle" onclick="toggleAbstract(this)">+ Abstract</button>
+                <div class="abstract-content">
+                    <p class="abstract">
+                        This paper examines how climate shocks propagate through banking networks and trade credit 
+                        relationships using administrative data from Chile. Employing a Local Projections 
+                        Difference-in-Differences methodology, I analyze how firms with different banking relationships 
+                        and trade credit networks respond to wildfire events. [Add your findings and implications.]
+                    </p>
+                </div>
+                <div class="paper-links">
+                    <a href="#">PDF</a>
+                </div>
+            </div>
+
+            <div class="paper">
+                <h3 class="paper-title">
+                    <a href="#">Inflation Expectations Across Regimes: Consumer vs. Professional Forecasters</a>
+                </h3>
+                <p class="coauthors">with [Co-author Name]</p>
+                <p class="paper-status">Under Review</p>
+                <button class="abstract-toggle" onclick="toggleAbstract(this)">+ Abstract</button>
+                <div class="abstract-content">
+                    <p class="abstract">
+                        We investigate how forecast accuracy varies between consumers and professional forecasters 
+                        across different inflation regimes. Using Coibion-Gorodnichenko information rigidity tests 
+                        and state-dependent Taylor rule analysis, we document that [your key findings]. Our results 
+                        suggest important differences in expectation formation across agent types and inflation environments.
+                    </p>
+                </div>
+                <div class="paper-links">
+                    <a href="#">PDF</a>
+                </div>
+            </div>
+
+            <div class="paper">
+                <h3 class="paper-title">
+                    <a href="#">Climate Policy Uncertainty and Macroeconomic Dynamics</a>
+                </h3>
+                <p class="paper-status">Revise & Resubmit, Economic Modelling</p>
+                <button class="abstract-toggle" onclick="toggleAbstract(this)">+ Abstract</button>
+                <div class="abstract-content">
+                    <p class="abstract">
+                        [Add abstract for this paper.]
+                    </p>
+                </div>
+                <div class="paper-links">
+                    <a href="#">PDF</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CV Section -->
+        <section id="cv" class="cv-section">
+            <h2>Curriculum Vitae</h2>
+            <p style="margin-bottom: 2rem; color: var(--text-light);">
+                Download my full CV for details on education, research experience, and teaching.
+            </p>
+            <a href="#" class="cv-button">Download CV (PDF)</a>
+        </section>
+
+        <!-- Teaching Section -->
+        <section id="teaching">
+            <h2>Teaching</h2>
+            
+            <div class="teaching-item">
+                <h3>Instructor</h3>
+                <p>Intermediate Macroeconomics, Rutgers University (Summer 2024)</p>
+            </div>
+
+            <div class="teaching-item">
+                <h3>Teaching Assistant</h3>
+                <p>Principles of Macroeconomics, Rutgers University (2022–2024)</p>
+                <p>Econometrics, Rutgers University (2023)</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Your Name · Last updated: January 2025</p>
+    </footer>
+
+    <script>
+        function toggleAbstract(button) {
+            const content = button.nextElementSibling;
+            content.classList.toggle('show');
+            button.textContent = content.classList.contains('show') ? '− Abstract' : '+ Abstract';
+        }
+    </script>
+</body>
+</html>
