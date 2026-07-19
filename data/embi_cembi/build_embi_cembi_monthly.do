@@ -44,11 +44,15 @@ set more off
 version 15.1
 
 *--- Carpeta de trabajo: la del propio do-file --------------------------------
-*  Si lo corres interactivamente, seteala a mano:
-*     cd "ruta/a/data/embi_cembi"
+*  Debe correrse desde la carpeta que contiene este .do, porque descarga y
+*  exporta archivos (GemDataEXTR.xlsx, embi_cembi_monthly.dta/.csv) al
+*  directorio actual. Si no, ABORTAMOS para no tocar la carpeta del caller.
+*  Interactivo: primero  cd "ruta/a/data/embi_cembi"
 capture confirm file "build_embi_cembi_monthly.do"
 if _rc {
-    di as error "Corre este script desde su propia carpeta (cd ...)."
+    di as error "Corre este script desde su propia carpeta:  cd \"ruta/a/data/embi_cembi\""
+    di as error "El directorio actual (`c(pwd)') no contiene build_embi_cembi_monthly.do."
+    exit 601
 }
 
 local WBURL "https://databank.worldbank.org/data/download/GemDataEXTR.zip"

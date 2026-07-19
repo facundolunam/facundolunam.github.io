@@ -60,6 +60,10 @@ cd "data/embi_cembi"
 do build_embi_cembi_monthly.do
 ```
 
+**Importante:** hay que correrlo *desde* la carpeta que contiene el `.do`, porque
+descarga y exporta archivos al directorio actual. Si no encuentra el `.do` en el
+directorio actual, **aborta** (para no tocar la carpeta desde donde lo llamaste).
+
 El script: descarga el GEM, **autodetecta** la hoja de EMBI, la reestructura a
 panel largo, baja el proxy de FRED, mapea país→`iso3`→región y exporta el panel.
 
